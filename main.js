@@ -1,12 +1,10 @@
 const start__button = document.querySelector("button");
-const center__block = document.getElementsByClassName("body__block--center")[0];
+const start__block = document.getElementsByClassName("start")[0];
+const game__block = document.getElementsByClassName("body__block--game")[0];
 start__button.addEventListener("click", () => {
-  center__block.innerHTML = "";
-  game.GameBlockInitialization();
+  start__block.style.display = "none";
+  game__block.style.display = "flex";
 })
-
-const center__block__game = document.createElement("div");
-center__block__game.className = "body__block--game";
 
 class NewGame {
   GameBlockInitialization = () => {

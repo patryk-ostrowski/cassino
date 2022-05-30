@@ -12,7 +12,7 @@ body {
   justify-content: center;
   margin: 0;
   padding: 0;
-  background-color: rgb(235, 238, 89);
+  background-color: rgb(60,60,60);
   width: 70vw;
   height: 100vh;
 }
@@ -24,12 +24,12 @@ body {
 
 .body__block--left {
   background: rgb(49,71,190);
-  background: linear-gradient(90deg, rgb(49,71,190) 0%, rgb(49,71,190) 30%, rgb(114,130,154) 60%, rgb(235,238,89) 100%);
+  background: linear-gradient(90deg, rgba(49,71,190,1) 0%, rgba(53,73,181,1) 23%, rgba(57,65,106,1) 71%, rgba(60,60,60,1) 100%);
 }
 
 .body__block--right {
   background: rgb(49,71,190);
-  background: linear-gradient(270deg, rgb(49,71,190) 0%, rgb(49,71,190) 30%, rgb(114,130,154) 60%, rgb(235,238,89) 100%);
+  background: linear-gradient(270deg, rgba(49,71,190,1) 0%, rgba(53,73,181,1) 23%, rgba(57,65,106,1) 71%, rgba(60,60,60,1) 100%);  
 
 }
 
@@ -40,19 +40,21 @@ body {
 }
 
 .start__header {
+  color: rgb(216, 216, 216);
   text-align: center;
   font-size: 60px;
   font-weight: bold;
+
 }
 
 .start__button--start {
+  background-color: rgb(49,71,190);
+  color: rgb(216, 216, 216);
   height: 70px;
   margin-left: 30%;
   margin-right: 30%;
   border-radius: 30px;
   border: none;
-  background-color: rgb(49,71,190);
-  color: rgb(216, 216, 216);
   font-size: 40px;
   font-weight: bold;
   cursor: pointer;
@@ -65,7 +67,29 @@ body {
 }
 
 .body__block--game {
+  display: none;
+  justify-content: center;
+  width: 65vw;
+  height: 75vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.game__rolls {
+  margin-top: 35px;
+  padding: 20px;
+  width: 90%;
+  height: 200px;
+  display: flex;
+  justify-content: space-between;
+  background-color: rgba(82, 31, 31, 0.3);
+}
+
+.game__rolls--rolls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 200px;
   height: 200px;
-  background-color: #fff;
+  background-color: rgb(129, 123, 123);
 }
