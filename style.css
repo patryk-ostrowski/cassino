@@ -1,0 +1,71 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+}
+
+.body__block--center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(235, 238, 89);
+  width: 70vw;
+  height: 100vh;
+}
+
+.body__block--left, .body__block--right {
+  width: 15vw;
+  height: 100vh;
+}
+
+.body__block--left {
+  background: rgb(49,71,190);
+  background: linear-gradient(90deg, rgb(49,71,190) 0%, rgb(49,71,190) 30%, rgb(114,130,154) 60%, rgb(235,238,89) 100%);
+}
+
+.body__block--right {
+  background: rgb(49,71,190);
+  background: linear-gradient(270deg, rgb(49,71,190) 0%, rgb(49,71,190) 30%, rgb(114,130,154) 60%, rgb(235,238,89) 100%);
+
+}
+
+.start {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.start__header {
+  text-align: center;
+  font-size: 60px;
+  font-weight: bold;
+}
+
+.start__button--start {
+  height: 70px;
+  margin-left: 30%;
+  margin-right: 30%;
+  border-radius: 30px;
+  border: none;
+  background-color: rgb(49,71,190);
+  color: rgb(216, 216, 216);
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+
+}
+
+.start__button--start:hover {
+  background-color: rgb(28, 46, 145);
+  color: black;
+}
+
+.body__block--game {
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+}
