@@ -10,22 +10,17 @@ start__button.addEventListener("click", () => {
 
 class Game {
   rolls_table = [];
-  rolls_value = {
-    "rectangle": 5,
-    "circle": 10,
-    "square": 15,
-    "pentagon": 20,
-    "star": 25,
-  };
+  rolls_value = [5, 5, 10, 10, 15, 20];
+  rolls_quantity = 5;
 
   // return random items from dictionary
   rollingRolls = () => {
     this.rolls_table = [];
-    const object_rolls_number = Object.keys(this.rolls_value);
-    for (let i = 0; i < object_rolls_number.length; i++) {
-      let number_of_rolls = Math.floor(Math.random() * object_rolls_number.length);
-      let lukcy_object = object_rolls_number[number_of_rolls];
+    for (let i = 0; i < this.rolls_quantity; i++) {
+      let number_of_rolls = Math.floor(Math.random() * this.rolls_value.length);
+      let lukcy_object = this.rolls_value[number_of_rolls];
       this.rolls_table.push(lukcy_object);
+      console.log(lukcy_object);
     }
     return this.rolls_table;
   };
