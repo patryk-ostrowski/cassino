@@ -62,13 +62,6 @@ class Player {
   coins = 1000;
   rate = 1;
 
-  rectangles = 0;
-  circles = 0;
-  triangles = 0;
-  squares = 0;
-  pentagons = 0;
-  stars = 0;
-
   rectangles_all = 0;
   circles_all = 0;
   triangles_all = 0;
@@ -79,39 +72,18 @@ class Player {
   checkWin = () => {
     let rolls_player = new Game;
     const winning_table = rolls_player.rollingRolls();
-    console.log(winning_table);
+    const lucky_items = {};
     winning_table.forEach(item => {
-      if (item === "circle") {
-        this.circles += 1;
-      } else if (item === "triangle") {
-        this.triangles += 1;
-      } else if (item === "rectangle") {
-        this.rectangles += 1;
-      } else if (item === "pentagon") {
-        this.pentagons += 1;
-      } else {
-        this.stars += 1
-      }
-    })
-    if (this.circles == 3) {
-      console.log("3 koła!");
-    } else if (this.triangles == 3) {
-      console.log("3 trójkąty!");
-    } else if (this.squares == 3) {
-      console.log("3 kwadraty!");
-    } else if (this.pentagons == 3) {
-      console.log("3 pięciokąty!");
-    } else if (this.stars == 3) {
-      console.log("3 gwiazdy!");
-    } else {
-      console.log("Nie ma nic :(");
-    }
-    this.rectangles = 0;
-    this.circles = 0;
-    this.triangles = 0;
-    this.squares = 0;
-    this.pentagons = 0;
-    this.stars = 0;
+      lucky_items[item] = (lucky_items[item] || 0) + 1;
+    });
+    // console.log(lucky_items["circle"]) - to jak to działa można tak sprawdzić
+    if (lucky_items["circle"] === 3) {}
+    lucky_items["circle"] === 3 ? console.log("trzy circle!") : lucky_items["circle"] === 4 ? console.log("cztery circle!") : lucky_items["circle"] === 5 ? console.log("Rozbito bank circle!") : null;
+    lucky_items["triangle"] === 3 ? console.log("trzy trójkąty!") : lucky_items["triangle"] === 4 ? console.log("cztery triangle!") : lucky_items["triangle"] === 5 ? console.log("Rozbito bank triangle!") : null;
+    lucky_items["rectangle"] === 3 ? console.log("trzy rectangle!") : lucky_items["rectangle"] === 4 ? console.log("cztery rectangle!") : lucky_items["rectangle"] === 5 ? console.log("Rozbito bank rectangle!") : null;
+    lucky_items["pentagon"] === 3 ? console.log("trzy pentagon!") : lucky_items["pentagon"] === 4 ? console.log("cztery pentagon!") : lucky_items["pentagon"] === 5 ? console.log("Rozbito bank pentagon!") : null;
+    lucky_items["star"] === 3 ? console.log("trzy star!") : lucky_items["star"] === 4 ? console.log("cztery star!") : lucky_items["star"] === 5 ? console.log("Rozbito bank star!") : null;
+
   }
 
 }
