@@ -109,12 +109,12 @@ body {
   justify-content: space-around;
 }
 
-.game__rolls__bonuslist ul{
+.game__rolls__bonuslist ul, .game__results ul {
   margin: 0px;
   padding: 0px;
 }
 
-.game__rolls__bonuslist ul li{
+.game__rolls__bonuslist ul li, .game__results ul li {
   list-style-type: none;
 }
 
@@ -217,5 +217,32 @@ body {
 
   .game__rolls {
     margin-top: 10px;
+  }
+}
+
+@media all and (max-height: 400px) {
+  .game__rolls--rolls img, .game__rolls {
+    height: 80px;
+    padding: 0px;
+  }
+
+  .game__service {
+    font-size: 12px;
+  }
+
+  .body__block--game {
+    height: 100vh;
+  }
+  .game__service {
+    padding: 5px 5px;
+    grid-template-rows: 50px 1fr 30px;
+  }
+
+  .game__rolls {
+    margin-top: 20px;
+  }
+
+  .game__rate {
+    padding: 0;
   }
 }
