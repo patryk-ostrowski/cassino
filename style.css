@@ -86,15 +86,6 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.game__rolls--rolls {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 200px;
-  background-color: rgb(216, 216, 216);;
-}
-
 /* =============== game module ===================*/
 
 .game__service {
@@ -133,7 +124,11 @@ body {
 }
 
 .game__rate {
-  margin: 20px 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 0px 0px 0px;
   grid-column: 3/4;
   grid-row: 2/3;
 }
@@ -142,12 +137,85 @@ body {
   margin: 5px;
 }
 
+.game__rate input {
+  width: 100px;
+  text-align: center;
+  border-style: none;
+  height: 22px;
+  background-color: rgb(216, 216, 216);
+}
+
 .game__results {
   grid-column: 1/2;
   grid-row: 2/4;
+  padding-top: 20px;
+}
+
+.game__results p {
+  margin: 0;
 }
 
 .winning__result {
   grid-column: 2/3;
   grid-row: 2/3;
+}
+
+
+
+
+/* ======================== response settings ======================== */
+
+@media all and (max-width: 1600px) {
+  .game__rolls--rolls img, .game__rolls {
+    height: 150px;
+  }
+  
+  .body__block--game {
+    height: 600px;
+  }
+
+}
+
+@media all and (max-width: 1196px) {
+  .game__rolls--rolls img, .game__rolls {
+    height: 100px;
+  }
+
+  .game__service {
+    font-size: 15px;
+  }
+
+  .body__block--game {
+    height: 480px;
+  }
+}
+
+@media all and (max-width: 850px) {
+  .game__service {
+    padding: 10px 10px;
+    grid-template-rows: 50px 1fr 50px;
+  }
+
+  .game__rolls {
+    margin-top: 10px;
+  }
+
+  .game__results {
+    padding-top: 10px;
+  }
+
+}
+
+@media all and (max-height: 500px) {
+  .body__block--game {
+    height: 100vh;
+  }
+  .game__service {
+    padding: 10px 10px;
+    grid-template-rows: 50px 1fr 50px;
+  }
+
+  .game__rolls {
+    margin-top: 10px;
+  }
 }
