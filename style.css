@@ -161,8 +161,6 @@ body {
 }
 
 
-
-
 /* ======================== response settings ======================== */
 
 @media all and (max-width: 1600px) {
@@ -239,7 +237,7 @@ body {
   }
 
   .game__rolls {
-    margin-top: 20px;
+    margin-top: 5px;
   }
 
   .game__rate {

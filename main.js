@@ -173,7 +173,7 @@ class Player {
 
   gameMoreLucky = () => {
     if (this.coins <= 50) {
-      return ["circle", "circle", "circle", "triangle", "triangle", "rectangle", "pentagon"];
+      return ["circle", "triangle", "triangle", "rectangle", "rectangle", "rectangle", "pentagon", "star", "star", "star", "star"];
     } else {
       return ["circle", "triangle", "rectangle", "pentagon", "star"];
     }
