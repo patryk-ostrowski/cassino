@@ -34,17 +34,23 @@ body {
 }
 
 .start {
+  color: rgb(216, 216, 216);
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
 .start__header {
-  color: rgb(216, 216, 216);
   text-align: center;
   font-size: 60px;
   font-weight: bold;
+}
 
+.start__p {
+  margin: 0 10px 20px 10px;
+  text-align: center;
+  font-size: 15px;
+  font-weight: bold;
 }
 
 .start__button--start {
@@ -128,7 +134,7 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: 20px 0px 0px 0px;
+  padding: 10px 0px 10px 0px;
   grid-column: 3/4;
   grid-row: 2/3;
 }
@@ -189,6 +195,10 @@ body {
 }
 
 @media all and (max-width: 850px) {
+  .start__header {
+    font-size: 30px;
+  }
+
   .game__service {
     padding: 10px 10px;
     grid-template-rows: 50px 1fr 50px;
@@ -240,7 +250,4 @@ body {
     margin-top: 5px;
   }
 
-  .game__rate {
-    padding: 0;
-  }
 }
