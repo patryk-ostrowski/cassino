@@ -16,8 +16,11 @@ start__button.addEventListener("click", () => {
 })
 
 class Game {
+  constructor(rolls_value) {
+    this.rolls_value = rolls_value;
+  }
+
   rolls_table = [];
-  rolls_value = ["circle", "triangle", "rectangle", "pentagon", "star"];
   rolls_quantity = 5;
 
   // return random items in img
@@ -84,20 +87,22 @@ class Player {
       stars_all
     } = this;
     rate = input__rate.value;
+
     if (coins < rate || rate == 0) {
       alert("Nie masz pieniędzy!");
     } else {
       coins = coins - rate;
       winning__result.style.color = "yellow";
       winning__result.textContent = "";
-      let rolls_player = new Game();
+
+      let rolls_player = new Game(this.gameMoreLucky());
       const winning_table = rolls_player.rollingRolls();
       const lucky_items = {};
       winning_table.forEach(item => {
         lucky_items[item] = (lucky_items[item] || 0) + 1;
       });
-      // console.log(lucky_items["circle"]) - to jak to działa można tak sprawdzić
-      // koła
+      // console.log(lucky_items["circle"])
+
       if (lucky_items["circle"] === 4) {
         coins = coins + (rate * 2);
         winning__result.textContent = "Trafiłeś 4 koła!";
@@ -108,7 +113,7 @@ class Player {
         circles_all += 1;
         game__results[0].textContent = `Koła: ${circles_all}`;
       }
-      // trójkąty
+
       if (lucky_items["triangle"] === 4) {
         coins = coins + (rate * 3);
         winning__result.textContent = "Trafiłeś 4 trókąty!";
@@ -119,7 +124,7 @@ class Player {
         triangles_all += 1;
         game__results[1].textContent = `Trójkąty: ${triangles_all}`;
       }
-      // kwadraty
+
       if (lucky_items["rectangle"] === 4) {
         coins = coins + (rate * 4);
         winning__result.textContent = "Trafiłeś 4 kwaraty!";
@@ -130,7 +135,7 @@ class Player {
         rectangles_all += 1;
         game__results[2].textContent = `Kwadraty: ${rectangles_all}`;
       }
-      // pięciokąty
+
       if (lucky_items["pentagram"] === 4) {
         coins = coins + (rate * 5);
         winning__result.textContent = "Trafiłeś 4 pięciokąty!";
@@ -141,7 +146,7 @@ class Player {
         pentagons_all += 1;
         game__results[3].textContent = `Pięciokąty: ${pentagons_all}`;
       }
-      // gwiazdy
+
       if (lucky_items["star"] === 4) {
         coins = coins + (rate * 6);
         winning__result.textContent = "Trafiłeś 4 gwiazdy!";
@@ -165,8 +170,15 @@ class Player {
     this.pentagons_all = pentagons;
     this.stars_all = stars;
   }
-}
 
+  gameMoreLucky = () => {
+    if (this.coins <= 50) {
+      return ["circle", "circle", "circle", "triangle", "triangle", "rectangle", "pentagon"];
+    } else {
+      return ["circle", "triangle", "rectangle", "pentagon", "star"];
+    }
+  }
+}
 
 player = new Player;
 button__roll.addEventListener("click", () => player.checkWin())
