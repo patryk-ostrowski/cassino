@@ -4,6 +4,11 @@ const game__block = document.getElementsByClassName("body__block--game")[0];
 const rolls__divs = document.querySelectorAll('.game__rolls--rolls');
 const button__roll = document.querySelector(".game__rolls--start");
 const circle_img = document.getElementById("1");
+const money__bank = document.getElementsByClassName("money__bank")[0];
+const input__rate = document.querySelector("input");
+const winning__result = document.getElementsByClassName("winning__result--p")[0];
+const game__results = document.getElementsByClassName("game__results--all");
+console.log(game__results);
 
 start__button.addEventListener("click", () => {
   start__block.style.display = "none";
@@ -59,33 +64,107 @@ class Game {
 }
 
 class Player {
-  coins = 1000;
-  rate = 1;
+  coins = 100;
+  rate = 0;
 
-  rectangles_all = 0;
   circles_all = 0;
   triangles_all = 0;
-  squares_all = 0;
+  rectangles_all = 0;
   pentagons_all = 0;
   stars_all = 0;
 
   checkWin = () => {
-    let rolls_player = new Game;
-    const winning_table = rolls_player.rollingRolls();
-    const lucky_items = {};
-    winning_table.forEach(item => {
-      lucky_items[item] = (lucky_items[item] || 0) + 1;
-    });
-    // console.log(lucky_items["circle"]) - to jak to działa można tak sprawdzić
-    if (lucky_items["circle"] === 3) {}
-    lucky_items["circle"] === 3 ? console.log("trzy circle!") : lucky_items["circle"] === 4 ? console.log("cztery circle!") : lucky_items["circle"] === 5 ? console.log("Rozbito bank circle!") : null;
-    lucky_items["triangle"] === 3 ? console.log("trzy trójkąty!") : lucky_items["triangle"] === 4 ? console.log("cztery triangle!") : lucky_items["triangle"] === 5 ? console.log("Rozbito bank triangle!") : null;
-    lucky_items["rectangle"] === 3 ? console.log("trzy rectangle!") : lucky_items["rectangle"] === 4 ? console.log("cztery rectangle!") : lucky_items["rectangle"] === 5 ? console.log("Rozbito bank rectangle!") : null;
-    lucky_items["pentagon"] === 3 ? console.log("trzy pentagon!") : lucky_items["pentagon"] === 4 ? console.log("cztery pentagon!") : lucky_items["pentagon"] === 5 ? console.log("Rozbito bank pentagon!") : null;
-    lucky_items["star"] === 3 ? console.log("trzy star!") : lucky_items["star"] === 4 ? console.log("cztery star!") : lucky_items["star"] === 5 ? console.log("Rozbito bank star!") : null;
+    let {
+      coins,
+      rate,
+      circles_all,
+      triangles_all,
+      rectangles_all,
+      pentagons_all,
+      stars_all
+    } = this;
+    rate = input__rate.value;
+    if (coins < rate || rate == 0) {
+      alert("Nie masz pieniędzy!");
+    } else {
+      coins = coins - rate;
+      winning__result.style.color = "yellow";
+      winning__result.textContent = "";
+      let rolls_player = new Game();
+      const winning_table = rolls_player.rollingRolls();
+      const lucky_items = {};
+      winning_table.forEach(item => {
+        lucky_items[item] = (lucky_items[item] || 0) + 1;
+      });
+      // console.log(lucky_items["circle"]) - to jak to działa można tak sprawdzić
+      // koła
+      if (lucky_items["circle"] === 4) {
+        coins = coins + (rate * 2);
+        winning__result.textContent = "Trafiłeś 4 koła!";
+      } else if (lucky_items["circle"] === 5) {
+        coins = coins + (rate * 5);
+        winning__result.style.color = "rgb(168, 74, 74)";
+        winning__result.textContent = "Trafiłeś 5 kół!";
+        circles_all += 1;
+        game__results[0].textContent = `Koła: ${circles_all}`;
+      }
+      // trójkąty
+      if (lucky_items["triangle"] === 4) {
+        coins = coins + (rate * 3);
+        winning__result.textContent = "Trafiłeś 4 trókąty!";
+      } else if (lucky_items["triangle"] === 5) {
+        coins = coins + (rate * 10);
+        winning__result.style.color = "rgb(168, 74, 74)";
+        winning__result.textContent = "Trafiłeś 5 trójkątów!";
+        triangles_all += 1;
+        game__results[1].textContent = `Trójkąty: ${triangles_all}`;
+      }
+      // kwadraty
+      if (lucky_items["rectangle"] === 4) {
+        coins = coins + (rate * 4);
+        winning__result.textContent = "Trafiłeś 4 kwaraty!";
+      } else if (lucky_items["rectangle"] === 5) {
+        coins = coins + (rate * 15);
+        winning__result.style.color = "rgb(168, 74, 74)";
+        winning__result.textContent = "Trafiłeś 5 kwadratów!";
+        rectangles_all += 1;
+        game__results[2].textContent = `Kwadraty: ${rectangles_all}`;
+      }
+      // pięciokąty
+      if (lucky_items["pentagram"] === 4) {
+        coins = coins + (rate * 5);
+        winning__result.textContent = "Trafiłeś 4 pięciokąty!";
+      } else if (lucky_items["pentagram"] === 5) {
+        coins = coins + (rate * 20);
+        winning__result.style.color = "rgb(168, 74, 74)";
+        winning__result.textContent = "Trafiłeś 5 pięciokątów!";
+        pentagons_all += 1;
+        game__results[3].textContent = `Pięciokąty: ${pentagons_all}`;
+      }
+      // gwiazdy
+      if (lucky_items["star"] === 4) {
+        coins = coins + (rate * 6);
+        winning__result.textContent = "Trafiłeś 4 gwiazdy!";
+      } else if (lucky_items["star"] === 5) {
+        coins = coins + (rate * 25);
+        winning__result.style.color = "rgb(168, 74, 74)";
+        winning__result.textContent = "Trafiłeś 5 gwiazd! Bank rozbity!";
+        stars_all = stars_all + 1;
+        game__results[4].textContent = `Gwiazdy: ${stars_all}`;
+      }
+      this.viewForPlayer(coins, circles_all, triangles_all, rectangles_all, pentagons_all, stars_all);
+    }
+  };
 
+  viewForPlayer = (coins, circles, triangles, rectangles, pentagons, stars) => {
+    money__bank.textContent = `Ilość pieniędzy: ${coins}$`;
+    this.coins = coins;
+    this.circles_all = circles;
+    this.triangles_all = triangles;
+    this.rectangles_all = rectangles;
+    this.pentagons_all = pentagons;
+    this.stars_all = stars;
   }
-
 }
 
 
