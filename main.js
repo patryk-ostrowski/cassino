@@ -8,7 +8,7 @@ const money__bank = document.getElementsByClassName("money__bank")[0];
 const input__rate = document.querySelector("input");
 const winning__result = document.getElementsByClassName("winning__result--p")[0];
 const game__results = document.getElementsByClassName("game__results--all");
-console.log(game__results);
+const winning__result__cash = document.getElementsByClassName("winning__result--cash")[0];
 
 start__button.addEventListener("click", () => {
   start__block.style.display = "none";
@@ -35,8 +35,8 @@ class Game {
 
     rolls_table = [];
     for (let i = 0; i < rolls_quantity; i++) {
-      rolls__divs[i].textContent = "";
 
+      rolls__divs[i].textContent = "";
       let number_of_rolls = Math.floor(Math.random() * rolls_value.length);
       let lucky_object = rolls_value[number_of_rolls];
       rolls_table.push(lucky_object);
@@ -60,7 +60,6 @@ class Game {
           break;
       }
       rolls__divs[i].appendChild(img_to_display);
-
     }
     return rolls_table;
   };
@@ -94,6 +93,8 @@ class Player {
       coins = coins - rate;
       winning__result.style.color = "yellow";
       winning__result.textContent = "";
+      winning__result__cash.textContent = "";
+
 
       let rolls_player = new Game(this.gameMoreLucky());
       const winning_table = rolls_player.rollingRolls();
@@ -105,55 +106,65 @@ class Player {
 
       if (lucky_items["circle"] === 4) {
         coins = coins + (rate * 2);
-        winning__result.textContent = "Trafiłeś 4 koła!";
+        winning__result.textContent = "Trafione 4 koła!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 2}$`;
       } else if (lucky_items["circle"] === 5) {
         coins = coins + (rate * 5);
         winning__result.style.color = "rgb(168, 74, 74)";
-        winning__result.textContent = "Trafiłeś 5 kół!";
+        winning__result.textContent = "Trafione 5 kół!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 5}$`;
         circles_all += 1;
         game__results[0].textContent = `Koła: ${circles_all}`;
       }
 
       if (lucky_items["triangle"] === 4) {
         coins = coins + (rate * 3);
-        winning__result.textContent = "Trafiłeś 4 trókąty!";
+        winning__result.textContent = "Trafione 4 trókąty!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 3}$`;
       } else if (lucky_items["triangle"] === 5) {
         coins = coins + (rate * 10);
         winning__result.style.color = "rgb(168, 74, 74)";
-        winning__result.textContent = "Trafiłeś 5 trójkątów!";
+        winning__result.textContent = "Trafione 5 trójkątów!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 10}$`;
         triangles_all += 1;
         game__results[1].textContent = `Trójkąty: ${triangles_all}`;
       }
 
       if (lucky_items["rectangle"] === 4) {
         coins = coins + (rate * 4);
-        winning__result.textContent = "Trafiłeś 4 kwaraty!";
+        winning__result.textContent = "Trafione 4 kwaraty!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 4}$`;
       } else if (lucky_items["rectangle"] === 5) {
         coins = coins + (rate * 15);
         winning__result.style.color = "rgb(168, 74, 74)";
-        winning__result.textContent = "Trafiłeś 5 kwadratów!";
+        winning__result.textContent = "Trafione 5 kwadratów!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 15}$`;
         rectangles_all += 1;
         game__results[2].textContent = `Kwadraty: ${rectangles_all}`;
       }
 
       if (lucky_items["pentagram"] === 4) {
         coins = coins + (rate * 5);
-        winning__result.textContent = "Trafiłeś 4 pięciokąty!";
+        winning__result.textContent = "Trafione 4 pięciokąty!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 5}$`;
       } else if (lucky_items["pentagram"] === 5) {
         coins = coins + (rate * 20);
         winning__result.style.color = "rgb(168, 74, 74)";
-        winning__result.textContent = "Trafiłeś 5 pięciokątów!";
+        winning__result.textContent = "Trafione 5 pięciokątów!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 20}$`;
         pentagons_all += 1;
         game__results[3].textContent = `Pięciokąty: ${pentagons_all}`;
       }
 
       if (lucky_items["star"] === 4) {
         coins = coins + (rate * 6);
-        winning__result.textContent = "Trafiłeś 4 gwiazdy!";
+        winning__result.textContent = "Trafione 4 gwiazdy!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 6}$`;
       } else if (lucky_items["star"] === 5) {
         coins = coins + (rate * 25);
         winning__result.style.color = "rgb(168, 74, 74)";
-        winning__result.textContent = "Trafiłeś 5 gwiazd! Bank rozbity!";
+        winning__result.textContent = "Trafione 5 gwiazd!";
+        winning__result__cash.textContent = `Wygrana: ${rate * 25}$`;
         stars_all = stars_all + 1;
         game__results[4].textContent = `Gwiazdy: ${stars_all}`;
       }
@@ -172,8 +183,8 @@ class Player {
   }
 
   gameMoreLucky = () => {
-    if (this.coins <= 50) {
-      return ["circle", "triangle", "triangle", "rectangle", "rectangle", "rectangle", "pentagon", "star", "star", "star", "star"];
+    if (this.coins <= 60) {
+      return ["circle", "triangle", "triangle", "triangle", "triangle", "rectangle", "rectangle", "rectangle", "pentagon", "star", "star", "star", "star", "star"];
     } else {
       return ["circle", "triangle", "rectangle", "pentagon", "star"];
     }
