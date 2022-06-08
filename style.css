@@ -137,7 +137,7 @@ body {
   background-color: rgba(0, 0, 0, 0.3);
   color: rgb(216, 216, 216);
   border-radius: 5px;
-  border-style: 1px solid rgb(216, 216, 216);
+  border: 1px solid rgb(216, 216, 216);
   font-size: 22px;
   font-weight: bold;
 }
@@ -161,9 +161,10 @@ body {
   text-align: center;
   border-style: none;
   height: 22px;
-  background-color: rgba(0, 0, 0, 0.3);
   color: rgb(216, 216, 216);
   font-weight: bold;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgb(216, 216, 216);
 }
 
 .game__results {
