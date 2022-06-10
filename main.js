@@ -1,19 +1,23 @@
 const start__button = document.querySelector("button");
-const start__block = document.getElementsByClassName("start")[0];
-const game__block = document.getElementsByClassName("body__block--game")[0];
+const start__block = document.querySelector(".start");
+const game__block = document.querySelector(".body__block__game");
 const rolls__divs = document.querySelectorAll('.game__rolls--rolls');
 const button__roll = document.querySelector(".game__rolls--start");
 const circle_img = document.getElementById("1");
-const money__bank = document.getElementsByClassName("money__bank")[0];
+const money__bank = document.querySelector(".money__bank");
 const input__rate = document.querySelector("input");
-const winning__result = document.getElementsByClassName("winning__result--p")[0];
+const winning__result = document.querySelector(".winning__result--p");
 const game__results = document.getElementsByClassName("game__results--all");
-const winning__result__cash = document.getElementsByClassName("winning__result--cash")[0];
+const winning__result__cash = document.querySelector(".winning__result--cash");
 
-start__button.addEventListener("click", () => {
-  start__block.style.display = "none";
-  game__block.style.display = "flex";
-})
+const startGame = () => {
+  start__block.classList.remove("start");
+  start__block.classList.add("start--none")
+  game__block.classList.remove("body__block__game")
+  game__block.classList.add("body__block__game--start");
+}
+
+start__button.addEventListener("click", startGame)
 
 class Game {
   constructor(rolls_value) {
@@ -103,7 +107,7 @@ class Player {
         lucky_items[item] = (lucky_items[item] || 0) + 1;
       });
       // console.log(lucky_items["circle"])
-
+      
       if (lucky_items["circle"] === 4) {
         coins = coins + (rate * 2);
         winning__result.textContent = "Trafione 4 koła!";
@@ -186,7 +190,7 @@ class Player {
     if (this.coins <= 60) {
       return ["circle", "triangle", "triangle", "triangle", "triangle", "rectangle", "rectangle", "rectangle", "pentagon", "star", "star", "star", "star", "star"];
     } else {
-      return ["circle", "triangle", "rectangle", "pentagon", "star"];
+      return  ["circle", "triangle", "rectangle", "pentagon", "star"];
     }
   }
 }
