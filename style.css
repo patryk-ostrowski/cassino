@@ -206,7 +206,7 @@ body {
     height: 150px;
   }
 
-  .body__block--game {
+  .body__block__game--start {
     height: 600px;
   }
 
@@ -223,7 +223,7 @@ body {
     font-size: 15px;
   }
 
-  .body__block--game {
+  .body__block__game--start {
     height: 480px;
   }
 }
@@ -249,7 +249,7 @@ body {
 }
 
 @media all and (max-height: 500px) {
-  .body__block--game {
+  .body__block__game--start {
     height: 100vh;
   }
 
@@ -275,7 +275,7 @@ body {
     font-size: 12px;
   }
 
-  .body__block--game {
+  .body__block__game--start {
     height: 100vh;
   }
 
